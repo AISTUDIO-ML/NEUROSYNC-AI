@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  backend:
+    build: .
+    ports:
+    - 8000:8000
+    depends_on:
+    - simulator
+  simulator:
+    image: python:3.11
+    volumes:
+    - ./eeg_simulator.py:/app/eeg_simulator.py
+    working_dir: /app
+    command: python eeg_simulator.py
